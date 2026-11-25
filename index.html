@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Monacopet Store: produtos, banho e tosa com tele-busca para cães e gatos.">
+  <title>Início | Monacopet Store</title>
+
+  <!-- Bootstrap 5 (CDN) e estilos próprios -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- Link para quem usa teclado ou leitor de tela pular direto ao conteúdo -->
+<a class="visually-hidden-focusable pular-conteudo" href="#conteudo">Ir para o conteúdo principal</a>
+
+<!-- Faixa superior: status da loja, data/hora e opções de acessibilidade -->
+<div class="faixa-topo py-1">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div>
+      <span id="status-loja" class="selo-loja">Seg a sáb, das 9h às 19h</span>
+      <span id="data-hora" class="ms-2"></span>
+    </div>
+    <div role="group" aria-label="Opções de acessibilidade">
+      <button type="button" id="btn-fonte-menos" class="btn btn-sm btn-outline-light btn-acess" aria-label="Diminuir o tamanho da letra">A-</button>
+      <button type="button" id="btn-fonte-mais" class="btn btn-sm btn-outline-light btn-acess" aria-label="Aumentar o tamanho da letra">A+</button>
+      <button type="button" id="btn-contraste" class="btn btn-sm btn-outline-light btn-acess" aria-pressed="false">Contraste</button>
+    </div>
+  </div>
+</div>
+
+<!-- Barra de navegação (Bootstrap) -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-mp" aria-label="Menu principal">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" class="me-1" style="vertical-align:-5px">
+          <circle cx="5.5" cy="10" r="2.2"/><circle cx="9.5" cy="5.5" r="2.2"/><circle cx="14.5" cy="5.5" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/>
+          <path d="M12 11c-3 0-6 3.2-6 6 0 2 1.6 3 3.2 3 1.2 0 1.8-.6 2.8-.6s1.6.6 2.8.6c1.6 0 3.2-1 3.2-3 0-2.800-3-6-6-6z"/>
+        </svg>Monacopet Store
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+              aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir ou fechar o menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="cadastro.html">Cadastro</a></li>
+          <li class="nav-item"><a class="nav-link" href="agendamento.html">Agendamento</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="conteudo">
+
+  <!-- Boas-vindas com saudação e promoção que mudam conforme o horário/dia (js/comum.js) -->
+  <section class="container my-4" aria-labelledby="titulo-boas-vindas">
+    <h1 id="titulo-boas-vindas" class="h2 fw-bold">Monacopet Store</h1>
+    <p id="saudacao" class="lead mb-2">Seja bem-vindo(a) à Monacopet Store.</p>
+    <div class="alert alert-warning mb-0" role="note">
+      <strong>Promoção de hoje:</strong> <span id="promocao-dia">Confira nossas ofertas.</span>
+    </div>
+  </section>
+
+  <!-- Carrossel Bootstrap com os destaques da loja -->
+  <section class="container mb-4" aria-label="Destaques da loja">
+    <div id="carrosselMonacopet" class="carousel slide carrossel-mp rounded-4 overflow-hidden shadow"
+         data-bs-ride="carousel" data-bs-interval="5000" aria-roledescription="carrossel" aria-label="Destaques da Monacopet Store">
+
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carrosselMonacopet" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1: ração para cães"></button>
+        <button type="button" data-bs-target="#carrosselMonacopet" data-bs-slide-to="1" aria-label="Slide 2: ração para gatos"></button>
+        <button type="button" data-bs-target="#carrosselMonacopet" data-bs-slide-to="2" aria-label="Slide 3: brinquedos"></button>
+        <button type="button" data-bs-target="#carrosselMonacopet" data-bs-slide-to="3" aria-label="Slide 4: banho e tosa"></button>
+      </div>
+
+      <div class="carousel-inner">
+
+        <div class="carousel-item slide-1 active">
+          <div class="slide-conteudo d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <div class="col-md-6">
+              <h2 class="h1">Ração premium para cães</h2>
+              <p class="fs-5">Nutrição completa para o seu cão crescer forte e saudável.</p>
+              <a class="btn btn-light btn-lg" href="produtos.html?categoria=racao">Ver rações</a>
+            </div>
+            <img class="slide-foto" src="imagens/racao-cachorro.jpg" alt="Cachorro marrom sentado ao ar livre ao lado de dois pacotes de ração super premium">
+          </div>
+        </div>
+
+        <div class="carousel-item slide-2">
+          <div class="slide-conteudo d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <div class="col-md-6">
+              <h2 class="h1">Ração para gatos</h2>
+              <p class="fs-5">Sabor salmão e vegetais, com alto teor de proteína e cuidado com o trato urinário.</p>
+              <a class="btn btn-light btn-lg" href="produtos.html?categoria=racao">Ver rações</a>
+            </div>
+            <img class="slide-foto" src="imagens/racao-gato.jpg" alt="Gato branco, preto e laranja lambendo o focinho ao lado de um pacote de ração sabor salmão e vegetais e de um pote cheio">
+          </div>
+        </div>
+
+        <div class="carousel-item slide-3">
+          <div class="slide-conteudo d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <div class="col-md-6">
+              <h2 class="h1">Brinquedos que divertem</h2>
+              <p class="fs-5">Bolas interativas e arranhadores para gastar energia e proteger os móveis.</p>
+              <a class="btn btn-light btn-lg" href="produtos.html?categoria=brinquedos">Ver brinquedos</a>
+            </div>
+            <img class="slide-foto" src="imagens/bolinha.jpg" alt="Gato laranja brincando com uma bola transparente que solta petiscos">
+          </div>
+        </div>
+
+        <div class="carousel-item slide-4">
+          <div class="slide-conteudo d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <div class="col-md-6">
+              <h2 class="h1">Banho e tosa com tele-busca</h2>
+              <p class="fs-5">Agende o dia e o horário: buscamos seu pet em casa ou você o leva até a loja.</p>
+              <a class="btn btn-light btn-lg" href="agendamento.html">Agendar agora</a>
+            </div>
+            <img class="slide-foto" src="imagens/shampoo.jpg" alt="Cachorro branco e fofo deitado em uma toalha laranja ao lado de um frasco de shampoo para pelos claros">
+          </div>
+        </div>
+
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carrosselMonacopet" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Slide anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carrosselMonacopet" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo slide</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Atalhos para as áreas do site -->
+  <section class="container" aria-labelledby="titulo-atalhos">
+    <h2 id="titulo-atalhos" class="h3 mb-3">O que você precisa hoje?</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+      <div class="col">
+        <div class="card cartao-mp h-100"><div class="card-body d-flex flex-column">
+          <h3 class="h5 card-title">Produtos</h3>
+          <p class="card-text">Ração, brinquedos e itens de higiene para cães e gatos.</p>
+          <a href="produtos.html" class="btn btn-primary mt-auto">Ver produtos</a>
+        </div></div>
+      </div>
+      <div class="col">
+        <div class="card cartao-mp h-100"><div class="card-body d-flex flex-column">
+          <h3 class="h5 card-title">Serviços</h3>
+          <p class="card-text">Banho e tosa com tele-busca ou entrega no local.</p>
+          <a href="servicos.html" class="btn btn-primary mt-auto">Ver serviços</a>
+        </div></div>
+      </div>
+      <div class="col">
+        <div class="card cartao-mp h-100"><div class="card-body d-flex flex-column">
+          <h3 class="h5 card-title">Cadastro</h3>
+          <p class="card-text">Cadastre o tutor e o pet para agilizar seus atendimentos.</p>
+          <a href="cadastro.html" class="btn btn-primary mt-auto">Fazer cadastro</a>
+        </div></div>
+      </div>
+      <div class="col">
+        <div class="card cartao-mp h-100"><div class="card-body d-flex flex-column">
+          <h3 class="h5 card-title">Agendamento</h3>
+          <p class="card-text">Escolha o serviço, o dia no calendário e o horário.</p>
+          <a href="agendamento.html" class="btn btn-primary mt-auto">Agendar</a>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- Rodapé: contato, navegação e informações legais de autoria -->
+<footer class="rodape-mp mt-5 py-4">
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <h2 class="h5">Monacopet Store</h2>
+        <p class="mb-0">Cuidando do seu pet com carinho: produtos, banho e tosa com tele-busca.</p>
+      </div>
+      <div class="col-md-4">
+        <h2 class="h5">Contato</h2>
+        <address class="mb-0">
+          Ipiranga, 123 - Porto Alegre, RS<br>
+          Telefone: (51) 99999-0000<br>
+          E-mail: <a href="mailto:contato@monacopet.com.br">contato@monacopet.com.br</a><br>
+          Seg a sáb, das 9h às 19h
+        </address>
+      </div>
+      <div class="col-md-4">
+        <h2 class="h5">Navegação</h2>
+        <ul class="list-unstyled mb-0">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="cadastro.html">Cadastro de cliente e pet</a></li>
+          <li><a href="agendamento.html">Agendamento</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p class="small mb-0">&copy; <span id="ano-atual">2026</span> Monacopet Store. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- Scripts: Bootstrap primeiro, depois os nossos (comum.js em todas as páginas) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/comum.js"></script>
+</body>
+</html>
