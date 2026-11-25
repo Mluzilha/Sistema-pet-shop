@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ração, brinquedos e higiene para cães e gatos.">
+  <title>Produtos | Monacopet Store</title>
+
+  <!-- Bootstrap 5 (CDN) e estilos próprios -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- Link para quem usa teclado ou leitor de tela pular direto ao conteúdo -->
+<a class="visually-hidden-focusable pular-conteudo" href="#conteudo">Ir para o conteúdo principal</a>
+
+<!-- Faixa superior: status da loja, data/hora e opções de acessibilidade -->
+<div class="faixa-topo py-1">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div>
+      <span id="status-loja" class="selo-loja">Seg a sáb, das 9h às 19h</span>
+      <span id="data-hora" class="ms-2"></span>
+    </div>
+    <div role="group" aria-label="Opções de acessibilidade">
+      <button type="button" id="btn-fonte-menos" class="btn btn-sm btn-outline-light btn-acess" aria-label="Diminuir o tamanho da letra">A-</button>
+      <button type="button" id="btn-fonte-mais" class="btn btn-sm btn-outline-light btn-acess" aria-label="Aumentar o tamanho da letra">A+</button>
+      <button type="button" id="btn-contraste" class="btn btn-sm btn-outline-light btn-acess" aria-pressed="false">Contraste</button>
+    </div>
+  </div>
+</div>
+
+<!-- Barra de navegação (Bootstrap) -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-mp" aria-label="Menu principal">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" class="me-1" style="vertical-align:-5px">
+          <circle cx="5.5" cy="10" r="2.2"/><circle cx="9.5" cy="5.5" r="2.2"/><circle cx="14.5" cy="5.5" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/>
+          <path d="M12 11c-3 0-6 3.2-6 6 0 2 1.6 3 3.2 3 1.2 0 1.8-.6 2.8-.6s1.6.6 2.8.6c1.6 0 3.2-1 3.2-3 0-2.800-3-6-6-6z"/>
+        </svg>Monacopet Store
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+              aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir ou fechar o menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="produtos.html">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="cadastro.html">Cadastro</a></li>
+          <li class="nav-item"><a class="nav-link" href="agendamento.html">Agendamento</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="conteudo" class="container my-4">
+  <h1 class="h2 fw-bold">Nossos produtos</h1>
+  <p>Ração, petiscos, brinquedos e itens de higiene selecionados para o bem-estar do seu pet.</p>
+
+  <!-- Filtro por categoria (js/produtos.js) -->
+  <div class="d-flex flex-wrap gap-2 mb-2" role="group" aria-label="Filtrar produtos por categoria">
+    <button type="button" class="btn btn-primary" data-filtro="todos" aria-pressed="true">Todos</button>
+    <button type="button" class="btn btn-outline-primary" data-filtro="racao" aria-pressed="false">Ração e petiscos</button>
+    <button type="button" class="btn btn-outline-primary" data-filtro="brinquedos" aria-pressed="false">Brinquedos</button>
+    <button type="button" class="btn btn-outline-primary" data-filtro="higiene" aria-pressed="false">Higiene</button>
+  </div>
+  <p id="contagem-produtos" class="text-muted" role="status" aria-live="polite">Mostrando 10 produtos.</p>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4" id="lista-produtos">
+      <div class="col produto" data-categoria="racao">
+        <article class="card cartao-mp h-100">
+          <img src="imagens/racao-cachorro.jpg" class="foto-cartao" alt="Embalagens de ração Fri Dog Natural Diet de 2 kg e 15 kg ao lado de um cachorro marrom sentado" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge text-bg-secondary align-self-start mb-2">Ração</span>
+            <h3 class="h5 card-title">Ração Super Premium Cães Adultos 15 kg</h3>
+            <p class="card-text">Ração completa à base de vegetais, com alimentos naturais, fibras e probióticos para a saúde e a digestão do seu cão.</p>
+            <p class="preco mt-auto mb-0">R$ 229,90</p>
+          </div>
+        </article>
+      </div>
+      <div class="col produto" data-categoria="racao">
+        <article class="card cartao-mp h-100">
+          <img src="imagens/racao-gato.jpg" class="foto-cartao" alt="Pacote de ração Balance sabor salmão e vegetais, pote com ração e gato de três cores lambendo o focinho" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge text-bg-secondary align-self-start mb-2">Ração</span>
+            <h3 class="h5 card-title">Ração Premium Gatos Adultos Salmão e Vegetais 3 kg</h3>
+            <p class="card-text">Alimento 100% completo e balanceado, com minerais equilibrados para o trato urinário, fibras contra bolas de pelo e alto teor de proteína.</p>
+            <p class="preco mt-auto mb-0">R$ 99,90</p>
+          </div>
+        </article>
+      </div>
+      <div class="col produto" data-categoria="brinquedos">
+        <article class="card cartao-mp h-100">
+          <img src="imagens/bolinha.jpg" class="foto-cartao" alt="Bola transparente com compartimento amarelo que solta petiscos, com um gato laranja pulando ao fundo" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge text-bg-secondary align-self-start mb-2">Brinquedos</span>
+            <h3 class="h5 card-title">Bola Interativa com Petiscos</h3>
+            <p class="card-text">Bola transparente que libera petiscos enquanto o pet rola e brinca, estimulando o exercício e a atenção.</p>
+            <p class="preco mt-auto mb-0">R$ 34,90</p>
+          </div>
+        </article>
+      </div>
+      <div class="col produto" data-categoria="brinquedos">
+        <article class="card cartao-mp h-100">
+          <img src="imagens/arranhador.jpg" class="foto-cartao" alt="Gato listrado em pé arranhando um tapete de sisal preso ao braço de um sofá cinza" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge text-bg-secondary align-self-start mb-2">Brinquedos</span>
+            <h3 class="h5 card-title">Arranhador de Sisal para Sofá</h3>
+            <p class="card-text">Tapete de sisal resistente que protege o sofá e dá ao gato um lugar certo para arranhar e se esticar.</p>
+            <p class="preco mt-auto mb-0">R$ 49,90</p>
+          </div>
+        </article>
+      </div>
+      <div class="col produto" data-categoria="higiene">
+        <article class="card cartao-mp h-100">
+          <img src="imagens/shampoo.jpg" class="foto-cartao" alt="Frasco de shampoo One Pet para pelos claros de 500 ml ao lado de um cachorro branco em uma toalha laranja" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge text-bg-secondary align-self-start mb-2">Higiene</span>
+            <h3 class="h5 card-title">Shampoo Pelos Claros 500 ml</h3>
+            <p class="card-text">Shampoo para cães e gatos de pelagem clara, com efeito clareador que ajuda a evitar o amarelamento dos pelos.</p>
+            <p class="preco mt-auto mb-0">R$ 34,90</p>
+          </div>
+        </article>
+      </div>
+      <div class="col produto" data-categoria="higiene">
+        <article class="card cartao-mp h-100">
+          <img src="imagens/tapete.jpg" class="foto-cartao" alt="Pacote de tapetes higiênicos Artikão com 50 unidades, cachorro na embalagem e pilha de tapetes azuis" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge text-bg-secondary align-self-start mb-2">Higiene</span>
+            <h3 class="h5 card-title">Tapete Higiênico 50 unidades</h3>
+            <p class="card-text">Tapete absorvente de alta capacidade, mantém a casa limpa e sem odores durante o treinamento do filhote.</p>
+            <p class="preco mt-auto mb-0">R$ 89,90</p>
+          </div>
+        </article>
+      </div>
+      <div class="col produto" data-categoria="racao">
+        <article class="card cartao-mp h-100">
+          <img src="imagens/petisco-biscoito.jpg" class="foto-cartao" alt="Cachorro branco e marrom cheirando um prato cheio de biscoitos marrons quadrados sobre uma mesa de madeira" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge text-bg-secondary align-self-start mb-2">Petiscos</span>
+            <h3 class="h5 card-title">Biscoito Crocante para Cães 500 g</h3>
+            <p class="card-text">Biscoito assado e crocante, ideal como petisco no treino e como recompensa para o seu cão.</p>
+            <p class="preco mt-auto mb-0">R$ 24,90</p>
+          </div>
+        </article>
+      </div>
+      <div class="col produto" data-categoria="racao">
+        <article class="card cartao-mp h-100">
+          <img src="imagens/osso-mastigavel.jpg" class="foto-cartao" alt="Pacote vermelho LL Pet de 1 kg com ossos mastigáveis brancos e um filhote de cachorro na embalagem" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge text-bg-secondary align-self-start mb-2">Petiscos</span>
+            <h3 class="h5 card-title">Osso Mastigável 1 kg</h3>
+            <p class="card-text">Ossos mastigáveis em nó para o cão roer, que ajudam a distrair e a manter os dentes limpos.</p>
+            <p class="preco mt-auto mb-0">R$ 39,90</p>
+          </div>
+        </article>
+      </div>
+      <div class="col produto" data-categoria="brinquedos">
+        <article class="card cartao-mp h-100">
+          <img src="imagens/brinquedo-corda.jpg" class="foto-cartao" alt="Brinquedo de corda trançada com duas bolas de tênis nas pontas e um cachorro marrom e branco segurando uma delas na boca" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge text-bg-secondary align-self-start mb-2">Brinquedos</span>
+            <h3 class="h5 card-title">Corda com Bolas de Tênis</h3>
+            <p class="card-text">Brinquedo de corda com duas bolas de tênis, ótimo para puxar, morder e brincar de cabo de guerra.</p>
+            <p class="preco mt-auto mb-0">R$ 24,90</p>
+          </div>
+        </article>
+      </div>
+      <div class="col produto" data-categoria="brinquedos">
+        <article class="card cartao-mp h-100">
+          <img src="imagens/bola-petiscos-preta.jpg" class="foto-cartao" alt="Bola de borracha preta com furos e detalhes coloridos, com ração espalhada na frente e um cachorro salsicha olhando" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge text-bg-secondary align-self-start mb-2">Brinquedos</span>
+            <h3 class="h5 card-title">Bola Recheável com Som</h3>
+            <p class="card-text">Bola de borracha resistente que solta ração ou petiscos enquanto rola e faz barulho, para brincar sozinho.</p>
+            <p class="preco mt-auto mb-0">R$ 39,90</p>
+          </div>
+        </article>
+      </div>
+  </div>
+</main>
+
+
+<!-- Rodapé: contato, navegação e informações legais de autoria -->
+<footer class="rodape-mp mt-5 py-4">
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <h2 class="h5">Monacopet Store</h2>
+        <p class="mb-0">Cuidando do seu pet com carinho: produtos, banho e tosa com tele-busca.</p>
+      </div>
+      <div class="col-md-4">
+        <h2 class="h5">Contato</h2>
+        <address class="mb-0">
+          Ipiranga, 123 - Porto Alegre, RS<br>
+          Telefone: (51) 99999-0000<br>
+          E-mail: <a href="mailto:contato@monacopet.com.br">contato@monacopet.com.br</a><br>
+          Seg a sáb, das 9h às 19h
+        </address>
+      </div>
+      <div class="col-md-4">
+        <h2 class="h5">Navegação</h2>
+        <ul class="list-unstyled mb-0">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="cadastro.html">Cadastro de cliente e pet</a></li>
+          <li><a href="agendamento.html">Agendamento</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p class="small mb-0">&copy; <span id="ano-atual">2026</span> Monacopet Store. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- Scripts: Bootstrap primeiro, depois os nossos (comum.js em todas as páginas) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/comum.js"></script>
+<script src="js/produtos.js"></script>
+</body>
+</html>
