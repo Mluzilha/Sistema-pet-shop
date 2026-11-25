@@ -1,0 +1,256 @@
+/* ==========================================================================
+   Monacopet Store - Fase 2
+   Estilos personalizados. O Bootstrap 5 (CDN) cuida da grade e dos
+   componentes; este arquivo só define a identidade visual e os ajustes de
+   acessibilidade (foco visível, alto contraste e tamanho de fonte).
+   ========================================================================== */
+
+/* ---------- 1. Variáveis de cor (identidade visual) ---------- */
+:root {
+  --mp-primaria: #0f766e;        /* verde-petróleo: contraste 5,5:1 com branco */
+  --mp-primaria-escura: #115e59;
+  --mp-destaque: #f59e0b;        /* âmbar para detalhes */
+  --mp-fundo: #f4f8f7;           /* fundo suave das páginas */
+  --mp-texto: #1f2937;
+  --mp-borda: #d1e0dd;
+}
+
+/* ---------- 2. Base ---------- */
+body {
+  background-color: var(--mp-fundo);
+  color: var(--mp-texto);
+}
+
+/* Títulos na cor da marca (os do carrossel e do rodapé são brancos, mais abaixo) */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: var(--mp-primaria-escura);
+}
+
+/* Link "Ir para o conteúdo": só aparece quando recebe foco pelo teclado */
+.pular-conteudo:focus {
+  position: fixed;
+  top: .5rem;
+  left: .5rem;
+  z-index: 2000;
+  background: #fff;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 0 0 .2rem var(--mp-destaque);
+}
+
+/* Foco bem visível para quem navega pelo teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--mp-destaque);
+  outline-offset: 2px;
+}
+
+/* ---------- 3. Faixa superior (status, data/hora, acessibilidade) ---------- */
+.faixa-topo {
+  background-color: #0b3d39;
+  color: #fff;
+  font-size: .875rem;
+}
+.faixa-topo .btn-acess {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: rgba(255, 255, 255, .6);
+  --bs-btn-hover-bg: rgba(255, 255, 255, .15);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-color: #0b3d39;
+  padding: .1rem .55rem;
+}
+
+/* Selo "Aberto agora / Fechado" */
+.selo-loja {
+  display: inline-block;
+  padding: .1rem .6rem;
+  border-radius: 1rem;
+  font-weight: 600;
+}
+.selo-loja.aberto { background: #bbf7d0; color: #14532d; }
+.selo-loja.fechado { background: #fecaca; color: #7f1d1d; }
+
+/* ---------- 4. Barra de navegação ---------- */
+.navbar-mp {
+  background-color: var(--mp-primaria);
+}
+.navbar-mp .navbar-brand,
+.navbar-mp .nav-link {
+  color: #fff;
+}
+.navbar-mp .nav-link:hover,
+.navbar-mp .nav-link.active {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: .35rem;
+  text-decoration-thickness: 2px;
+}
+.navbar-mp .navbar-toggler {
+  border-color: rgba(255, 255, 255, .7);
+}
+.navbar-mp .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* ---------- 5. Botões na cor da marca ---------- */
+.btn-primary {
+  --bs-btn-bg: var(--mp-primaria);
+  --bs-btn-border-color: var(--mp-primaria);
+  --bs-btn-hover-bg: var(--mp-primaria-escura);
+  --bs-btn-hover-border-color: var(--mp-primaria-escura);
+  --bs-btn-active-bg: var(--mp-primaria-escura);
+  --bs-btn-active-border-color: var(--mp-primaria-escura);
+  --bs-btn-disabled-bg: var(--mp-primaria);
+  --bs-btn-disabled-border-color: var(--mp-primaria);
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--mp-primaria);
+  --bs-btn-border-color: var(--mp-primaria);
+  --bs-btn-hover-bg: var(--mp-primaria);
+  --bs-btn-hover-border-color: var(--mp-primaria);
+  --bs-btn-active-bg: var(--mp-primaria);
+  --bs-btn-active-border-color: var(--mp-primaria);
+}
+
+/* ---------- 6. Carrossel da página inicial ---------- */
+.carrossel-mp .carousel-item {
+  min-height: 360px;
+  color: #fff;
+}
+.carrossel-mp .slide-conteudo {
+  min-height: 360px;
+  padding: 2rem 4.5rem;             /* espaço para as setas laterais */
+}
+/* Títulos do carrossel e do rodapé sempre claros sobre o fundo escuro */
+.carrossel-mp h2,
+.rodape-mp h2 {
+  color: #fff;
+}
+/* Setas mais estreitas, para não cobrirem o texto do slide */
+.carrossel-mp .carousel-control-prev,
+.carrossel-mp .carousel-control-next {
+  width: 3.5rem;
+}
+.carrossel-mp .slide-foto {
+  max-height: 280px;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 4px solid rgba(255, 255, 255, .85);
+}
+/* Cada slide tem um degradê próprio; todos mantêm contraste alto com o texto branco */
+.slide-1 { background: linear-gradient(135deg, #0f766e, #134e4a); }
+.slide-2 { background: linear-gradient(135deg, #1d4ed8, #1e3a8a); }
+.slide-3 { background: linear-gradient(135deg, #b45309, #7c2d12); }
+.slide-4 { background: linear-gradient(135deg, #6d28d9, #4c1d95); }
+
+@media (max-width: 767.98px) {
+  .carrossel-mp .slide-conteudo { padding: 1.5rem 3.5rem 3.5rem; text-align: center; }
+  .carrossel-mp .slide-foto { max-height: 180px; margin-top: 1rem; }
+}
+
+/* ---------- 7. Cartões de produtos e serviços ---------- */
+.cartao-mp {
+  border: 1px solid var(--mp-borda);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.cartao-mp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .12);
+}
+.cartao-mp .foto-cartao {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  width: 100%;
+  background: #fff;
+}
+.preco {
+  color: var(--mp-primaria-escura);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+/* ---------- 8. Formulários ---------- */
+.fieldset-mp {
+  border: 1px solid var(--mp-borda);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  background: #fff;
+}
+.fieldset-mp > legend {
+  float: none;                       /* mantém a legenda dentro da borda */
+  width: auto;
+  padding: 0 .5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--mp-primaria-escura);
+}
+/* Mensagem de erro dos grupos de radio/checkbox (aparece após tentar enviar) */
+.msg-grupo { display: none; color: #b42318; font-size: .875rem; }
+.was-validated .grupo-obrigatorio:has(input:invalid) .msg-grupo { display: block; }
+
+/* Resumo do agendamento (coluna lateral) */
+.resumo-agendamento {
+  border: 2px dashed var(--mp-primaria);
+  border-radius: 1rem;
+  background: #fff;
+}
+
+/* ---------- 9. Rodapé ---------- */
+.rodape-mp {
+  background-color: #0b3d39;
+  color: #e5f2f0;
+}
+.rodape-mp a { color: #fff; }
+
+/* ---------- 10. Acessibilidade: movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .cartao-mp { transition: none; }
+  .cartao-mp:hover { transform: none; }
+}
+
+/* ---------- 11. Acessibilidade: modo de alto contraste ----------
+   Ativado pelo botão "Contraste" (classe aplicada no <body> pelo comum.js). */
+body.alto-contraste {
+  background: #000;
+  color: #ffff00;
+}
+body.alto-contraste a { color: #00ffff; text-decoration: underline; }
+body.alto-contraste h1, body.alto-contraste h2, body.alto-contraste h3,
+body.alto-contraste h4, body.alto-contraste h5, body.alto-contraste h6,
+body.alto-contraste .carrossel-mp h2, body.alto-contraste .rodape-mp h2 { color: #ffff00; }
+body.alto-contraste .navbar-mp,
+body.alto-contraste .faixa-topo,
+body.alto-contraste .rodape-mp { background: #000; border-bottom: 2px solid #ffff00; color: #ffff00; }
+body.alto-contraste .navbar-mp .navbar-brand,
+body.alto-contraste .navbar-mp .nav-link,
+body.alto-contraste .rodape-mp a { color: #ffff00; }
+body.alto-contraste .card,
+body.alto-contraste .cartao-mp,
+body.alto-contraste .fieldset-mp,
+body.alto-contraste .resumo-agendamento,
+body.alto-contraste .list-group-item,
+body.alto-contraste .accordion-item { background: #000; color: #ffff00; border: 2px solid #ffff00; }
+body.alto-contraste .text-muted,
+body.alto-contraste .form-text,
+body.alto-contraste .preco,
+body.alto-contraste .fieldset-mp > legend { color: #ffff00 !important; }
+body.alto-contraste .form-control,
+body.alto-contraste .form-select { background: #000; color: #ffff00; border: 2px solid #ffff00; }
+body.alto-contraste .btn-primary,
+body.alto-contraste .btn-outline-primary,
+body.alto-contraste .btn-outline-secondary { background: #ffff00; color: #000; border-color: #ffff00; font-weight: 700; }
+body.alto-contraste .slide-1,
+body.alto-contraste .slide-2,
+body.alto-contraste .slide-3,
+body.alto-contraste .slide-4 { background: #000; border-top: 2px solid #ffff00; border-bottom: 2px solid #ffff00; color: #ffff00; }
+body.alto-contraste .selo-loja { background: #ffff00; color: #000; }
+body.alto-contraste .bg-white, body.alto-contraste .bg-light { background: #000 !important; }
