@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Banho e tosa com tele-busca ou entrega no local.">
+  <title>Serviços | Monacopet Store</title>
+
+  <!-- Bootstrap 5 (CDN) e estilos próprios -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- Link para quem usa teclado ou leitor de tela pular direto ao conteúdo -->
+<a class="visually-hidden-focusable pular-conteudo" href="#conteudo">Ir para o conteúdo principal</a>
+
+<!-- Faixa superior: status da loja, data/hora e opções de acessibilidade -->
+<div class="faixa-topo py-1">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div>
+      <span id="status-loja" class="selo-loja">Seg a sáb, das 9h às 19h</span>
+      <span id="data-hora" class="ms-2"></span>
+    </div>
+    <div role="group" aria-label="Opções de acessibilidade">
+      <button type="button" id="btn-fonte-menos" class="btn btn-sm btn-outline-light btn-acess" aria-label="Diminuir o tamanho da letra">A-</button>
+      <button type="button" id="btn-fonte-mais" class="btn btn-sm btn-outline-light btn-acess" aria-label="Aumentar o tamanho da letra">A+</button>
+      <button type="button" id="btn-contraste" class="btn btn-sm btn-outline-light btn-acess" aria-pressed="false">Contraste</button>
+    </div>
+  </div>
+</div>
+
+<!-- Barra de navegação (Bootstrap) -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-mp" aria-label="Menu principal">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" class="me-1" style="vertical-align:-5px">
+          <circle cx="5.5" cy="10" r="2.2"/><circle cx="9.5" cy="5.5" r="2.2"/><circle cx="14.5" cy="5.5" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/>
+          <path d="M12 11c-3 0-6 3.2-6 6 0 2 1.6 3 3.2 3 1.2 0 1.8-.6 2.8-.6s1.6.6 2.8.6c1.6 0 3.2-1 3.2-3 0-2.800-3-6-6-6z"/>
+        </svg>Monacopet Store
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+              aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir ou fechar o menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="servicos.html">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="cadastro.html">Cadastro</a></li>
+          <li class="nav-item"><a class="nav-link" href="agendamento.html">Agendamento</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="conteudo" class="container my-4">
+  <h1 class="h2 fw-bold">Nossos serviços</h1>
+  <p>Banho e tosa com horário marcado. Você escolhe entre a <strong>tele-busca</strong> (buscamos e devolvemos seu pet em casa)
+     ou a <strong>entrega no local</strong> (você leva o pet até a loja).</p>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+
+    <div class="col">
+      <article class="card cartao-mp h-100">
+        <img src="imagens/banho.jpg" class="foto-cartao" alt="Cachorro tomando banho com espuma de shampoo" loading="lazy">
+        <div class="card-body d-flex flex-column">
+          <h2 class="h4 card-title">Banho</h2>
+          <p class="card-text">Banho completo com shampoo adequado ao tipo de pelo, secagem e perfume. Duração média: 1 hora.</p>
+          <ul class="list-unstyled">
+            <li><strong>Tele-busca:</strong> sim (taxa de R$ 10,00)</li>
+            <li><strong>Entrega no local:</strong> sim (sem taxa)</li>
+          </ul>
+          <p class="preco mt-auto">R$ 60,00</p>
+          <a href="agendamento.html?servico=banho" class="btn btn-primary">Agendar banho</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="col">
+      <article class="card cartao-mp h-100">
+        <img src="imagens/tosa.jpg" class="foto-cartao" alt="Cachorro sendo tosado por um profissional com a máquina de tosa" loading="lazy">
+        <div class="card-body d-flex flex-column">
+          <h2 class="h4 card-title">Tosa</h2>
+          <p class="card-text">Tosa higiênica ou completa, de acordo com a raça e a preferência do tutor. Duração média: 1h30.</p>
+          <ul class="list-unstyled">
+            <li><strong>Tele-busca:</strong> sim (taxa de R$ 10,00)</li>
+            <li><strong>Entrega no local:</strong> sim (sem taxa)</li>
+          </ul>
+          <p class="preco mt-auto">R$ 80,00</p>
+          <a href="agendamento.html?servico=tosa" class="btn btn-primary">Agendar tosa</a>
+        </div>
+      </article>
+    </div>
+
+  </div>
+
+  <section class="mt-5" aria-labelledby="titulo-como-funciona">
+    <h2 id="titulo-como-funciona" class="h3">Como funciona</h2>
+    <ol class="list-group list-group-numbered">
+      <li class="list-group-item">Faça o <a href="cadastro.html">cadastro</a> do tutor e do pet (uma única vez).</li>
+      <li class="list-group-item">Em <a href="agendamento.html">Agendamento</a>, escolha o serviço e se prefere tele-busca ou entrega no local.</li>
+      <li class="list-group-item">Marque o dia no calendário e escolha um horário disponível (segunda a sábado, das 9h às 19h).</li>
+      <li class="list-group-item">Confirme e pronto: o resumo fica salvo em "Meus agendamentos".</li>
+    </ol>
+  </section>
+</main>
+
+
+<!-- Rodapé: contato, navegação e informações legais de autoria -->
+<footer class="rodape-mp mt-5 py-4">
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <h2 class="h5">Monacopet Store</h2>
+        <p class="mb-0">Cuidando do seu pet com carinho: produtos, banho e tosa com tele-busca.</p>
+      </div>
+      <div class="col-md-4">
+        <h2 class="h5">Contato</h2>
+        <address class="mb-0">
+          Ipiranga, 123 - Porto Alegre, RS<br>
+          Telefone: (51) 99999-0000<br>
+          E-mail: <a href="mailto:contato@monacopet.com.br">contato@monacopet.com.br</a><br>
+          Seg a sáb, das 9h às 19h
+        </address>
+      </div>
+      <div class="col-md-4">
+        <h2 class="h5">Navegação</h2>
+        <ul class="list-unstyled mb-0">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="cadastro.html">Cadastro de cliente e pet</a></li>
+          <li><a href="agendamento.html">Agendamento</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p class="small mb-0">&copy; <span id="ano-atual">2026</span> Monacopet Store. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- Scripts: Bootstrap primeiro, depois os nossos (comum.js em todas as páginas) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/comum.js"></script>
+</body>
+</html>
