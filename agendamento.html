@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Agende banho ou tosa com tele-busca ou entrega no local.">
+  <title>Agendamento | Monacopet Store</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- Link para quem usa teclado ou leitor de tela pular direto ao conteúdo -->
+<a class="visually-hidden-focusable pular-conteudo" href="#conteudo">Ir para o conteúdo principal</a>
+
+<!-- Faixa superior: status da loja, data/hora e opções de acessibilidade -->
+<div class="faixa-topo py-1">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div>
+      <span id="status-loja" class="selo-loja">Seg a sáb, das 9h às 19h</span>
+      <span id="data-hora" class="ms-2"></span>
+    </div>
+    <div role="group" aria-label="Opções de acessibilidade">
+      <button type="button" id="btn-fonte-menos" class="btn btn-sm btn-outline-light btn-acess" aria-label="Diminuir o tamanho da letra">A-</button>
+      <button type="button" id="btn-fonte-mais" class="btn btn-sm btn-outline-light btn-acess" aria-label="Aumentar o tamanho da letra">A+</button>
+      <button type="button" id="btn-contraste" class="btn btn-sm btn-outline-light btn-acess" aria-pressed="false">Contraste</button>
+    </div>
+  </div>
+</div>
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-mp" aria-label="Menu principal">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" class="me-1" style="vertical-align:-5px">
+          <circle cx="5.5" cy="10" r="2.2"/><circle cx="9.5" cy="5.5" r="2.2"/><circle cx="14.5" cy="5.5" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/>
+          <path d="M12 11c-3 0-6 3.2-6 6 0 2 1.6 3 3.2 3 1.2 0 1.8-.6 2.8-.6s1.6.6 2.8.6c1.6 0 3.2-1 3.2-3 0-2.800-3-6-6-6z"/>
+        </svg>Monacopet Store
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+              aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir ou fechar o menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="cadastro.html">Cadastro</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="agendamento.html">Agendamento</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="conteudo" class="container my-4">
+  <h1 class="h2 fw-bold">Agendamento de banho e tosa</h1>
+  <p>Escolha o serviço, como o pet será atendido e o dia e o horário no calendário.
+     Ainda não é cliente? <a href="cadastro.html">Faça o cadastro</a> primeiro: seus dados serão preenchidos automaticamente.</p>
+
+  <!-- Mensagem de confirmação (js/agendamento.js) -->
+  <div id="msg-agendamento" class="alert alert-success d-none" role="status" tabindex="-1"></div>
+
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <form id="formAgendamento" class="row g-4" novalidate>
+
+        <!-- ===== DADOS ===== -->
+        <fieldset class="fieldset-mp col-12">
+          <legend>1. Seus dados</legend>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="nomeTutor" class="form-label">Nome do tutor <span class="text-danger" aria-hidden="true">*</span></label>
+              <input type="text" class="form-control" id="nomeTutor" name="nomeTutor" placeholder="Ex.: Maria da Silva" minlength="5" maxlength="80" autocomplete="name" required>
+              <div class="invalid-feedback">Informe o nome do tutor.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="telefoneTutor" class="form-label">Telefone / WhatsApp <span class="text-danger" aria-hidden="true">*</span></label>
+              <input type="tel" class="form-control" id="telefoneTutor" name="telefoneTutor" placeholder="(51) 99999-0000" maxlength="15"
+                     pattern="\(\d{2}\) \d{4,5}-\d{4}" autocomplete="tel" required>
+              <div class="invalid-feedback">Informe o telefone com DDD.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="nomePetAg" class="form-label">Nome do pet <span class="text-danger" aria-hidden="true">*</span></label>
+              <input type="text" class="form-control" id="nomePetAg" name="nomePetAg" placeholder="Ex.: Thor" minlength="2" maxlength="40" required>
+              <div class="invalid-feedback">Informe o nome do pet.</div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ===== SERVIÇO ===== -->
+        <fieldset class="fieldset-mp col-12 grupo-obrigatorio">
+          <legend>2. Serviço</legend>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="servico" id="servicoBanho" value="banho" required>
+            <label class="form-check-label" for="servicoBanho"><strong>Banho</strong> - R$ 60,00 (cerca de 1 hora)</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="servico" id="servicoTosa" value="tosa" required>
+            <label class="form-check-label" for="servicoTosa"><strong>Tosa</strong> - R$ 80,00 (cerca de 1h30)</label>
+          </div>
+          <div class="msg-grupo">Escolha o serviço.</div>
+        </fieldset>
+
+        <!-- ===== MÉTODO ===== -->
+        <fieldset class="fieldset-mp col-12 grupo-obrigatorio">
+          <legend>3. Como o pet será atendido?</legend>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="metodo" id="metodoTele" value="telebusca" required>
+            <label class="form-check-label" for="metodoTele"><strong>Tele-busca</strong> - buscamos e devolvemos o pet no seu endereço (taxa de R$ 10,00)</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="metodo" id="metodoLocal" value="entrega" required>
+            <label class="form-check-label" for="metodoLocal"><strong>Entrega no local</strong> - você leva o pet até a loja (sem taxa)</label>
+          </div>
+          <div class="msg-grupo">Escolha como o pet será atendido.</div>
+
+          <!-- Só aparece (e só é obrigatório) quando a tele-busca é escolhida -->
+          <div id="bloco-telebusca" class="mt-3 d-none">
+            <label for="enderecoBusca" class="form-label">Endereço para buscar o pet <span class="text-danger" aria-hidden="true">*</span></label>
+            <input type="text" class="form-control" id="enderecoBusca" name="enderecoBusca" placeholder="Rua, número, complemento e bairro" maxlength="150" autocomplete="street-address">
+            <div class="invalid-feedback">Informe o endereço para a tele-busca.</div>
+          </div>
+          <p id="bloco-local" class="mt-3 mb-0 d-none">Nosso endereço: Rua Exemplo, 123 - Porto Alegre, RS. Aguardamos você no horário marcado!</p>
+        </fieldset>
+
+        <!-- ===== DATA E HORÁRIO ===== -->
+        <fieldset class="fieldset-mp col-12">
+          <legend>4. Dia e horário</legend>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="dataAgendamento" class="form-label">Dia (escolha no calendário) <span class="text-danger" aria-hidden="true">*</span></label>
+              <input type="date" class="form-control" id="dataAgendamento" name="dataAgendamento" aria-describedby="ajuda-data" required>
+              <div id="ajuda-data" class="form-text">Atendemos de segunda a sábado.</div>
+              <div class="invalid-feedback">Escolha uma data de segunda a sábado, a partir de hoje.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="horario" class="form-label">Horário <span class="text-danger" aria-hidden="true">*</span></label>
+              <select class="form-select" id="horario" name="horario" aria-describedby="ajuda-horario" required>
+                <option value="" selected disabled>Escolha primeiro o dia</option>
+              </select>
+              <div id="ajuda-horario" class="form-text">Horários já ocupados ou passados ficam desabilitados.</div>
+              <div class="invalid-feedback">Escolha um horário disponível.</div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="col-12 d-flex flex-wrap gap-2">
+          <button type="submit" class="btn btn-primary btn-lg">Confirmar agendamento</button>
+          <button type="reset" class="btn btn-outline-secondary btn-lg">Limpar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ===== RESUMO AO VIVO ===== -->
+    <aside class="col-lg-4" aria-label="Resumo do agendamento">
+      <div class="resumo-agendamento p-3 position-sticky" style="top:1rem">
+        <h2 class="h5">Resumo</h2>
+        <dl class="mb-0" aria-live="polite">
+          <dt>Serviço</dt><dd id="resumo-servico">-</dd>
+          <dt>Atendimento</dt><dd id="resumo-metodo">-</dd>
+          <dt>Dia</dt><dd id="resumo-data">-</dd>
+          <dt>Horário</dt><dd id="resumo-horario">-</dd>
+          <dt>Total</dt><dd id="resumo-total" class="preco mb-0">R$ 0,00</dd>
+        </dl>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ===== MEUS AGENDAMENTOS ===== -->
+  <section class="mt-5" aria-labelledby="titulo-meus">
+    <h2 id="titulo-meus" class="h3">Meus agendamentos</h2>
+    <p id="sem-agendamentos" class="text-muted">Você ainda não tem agendamentos neste aparelho.</p>
+    <ul id="lista-agendamentos" class="list-group"></ul>
+  </section>
+</main>
+
+
+<!-- Rodapé: contato, navegação e informações legais de autoria -->
+<footer class="rodape-mp mt-5 py-4">
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <h2 class="h5">Monacopet Store</h2>
+        <p class="mb-0">Cuidando do seu pet com carinho: produtos, banho e tosa com tele-busca.</p>
+      </div>
+      <div class="col-md-4">
+        <h2 class="h5">Contato</h2>
+        <address class="mb-0">
+          Ipiranga, 123 - Porto Alegre, RS<br>
+          Telefone: (51) 99999-0000<br>
+          E-mail: <a href="mailto:contato@monacopet.com.br">contato@monacopet.com.br</a><br>
+          Seg a sáb, das 9h às 19h
+        </address>
+      </div>
+      <div class="col-md-4">
+        <h2 class="h5">Navegação</h2>
+        <ul class="list-unstyled mb-0">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="cadastro.html">Cadastro de cliente e pet</a></li>
+          <li><a href="agendamento.html">Agendamento</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p class="small mb-0">&copy; <span id="ano-atual">2026</span> Monacopet Store. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- Scripts: Bootstrap primeiro, depois os nossos (comum.js em todas as páginas) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/comum.js"></script>
+<script src="js/agendamento.js"></script>
+</body>
+</html>
